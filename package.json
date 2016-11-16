@@ -1,0 +1,25 @@
+{
+  "name": "ruder",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gempesaw/ruder.git"
+  },
+  "keywords": [
+    "router",
+    "http",
+    "micro",
+    "rude"
+  ],
+  "author": "Minh Nguyen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gempesaw/ruder/issues"
+  },
+  "homepage": "https://github.com/gempesaw/ruder#readme"
+}
