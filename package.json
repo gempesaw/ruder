@@ -25,6 +25,8 @@
   "homepage": "https://github.com/gempesaw/ruder#readme",
   "dependencies": {
     "request": "^2.78.0",
+    "router": "^1.1.4",
+    "express": "latest",
     "request-promise-native": "^1.0.3"
   },
   "devDependencies": {
