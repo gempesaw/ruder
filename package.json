@@ -29,6 +29,7 @@
     "body-parser": "^1.15.2",
     "express": "latest",
     "request": "^2.78.0",
+    "request-promise-native": "^1.0.3",
     "router": "^1.1.4"
   },
   "devDependencies": {
