@@ -27,10 +27,15 @@ describe('Parsing', () => {
     describe('POST', () => {
         beforeEach( () => {
             text = `POST http://www.google.com
-Header1: Value1
+Header1: Value1: Value3
 Header2: Value2
 
-{ "json": "body", "json2": "body"}`;
+[
+    1,
+    2,
+    { "three":
+"four" }
+]`;
             options = parsePayload(text);
         });
 
@@ -44,16 +49,17 @@ Header2: Value2
 
         it('should extract the header', () => {
             expect(options.headers).to.eql({
-                Header1: 'Value1',
+                Header1: 'Value1: Value3',
                 Header2: 'Value2'
             });
         });
 
         it('should extract the body', () => {
-            expect(options.body).to.eql({
-                json: 'body',
-                json2: 'body'
-            });
+            expect(options.body).to.eql([
+                1,
+                2,
+                { three: "four" }
+            ]);
         });
 
         it('should set the appropriate json header', () => {
