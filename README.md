@@ -1,4 +1,4 @@
-# ruder
+# ruder [![Build Status](https://travis-ci.org/honeydew-sc/ruder.svg?branch=master)](https://travis-ci.org/honeydew-sc/ruder)
 
 ruder is a webserver that makes http requests for you, since you can't
 do it yourself. Like if you're a browser, and jsonP only allows GETs
