@@ -15,10 +15,20 @@ and CORS stops you from accessing other domains.
 
 Make a POST to `/` with a payload like:
 
-    GET https://www.google.com
+```
+{ "data": "POST https://www.example.com
+Arbitrary: Header
+
+{ \"some\": \"json payload\" }}"
+```
+
+The header and body are optional; for example, a simple DELETE payload
+could look like `{"data": "DELETE https://www.google.com" }`.
 
 The ruder server will parse that strange payload into a viable request
-and return you the contents.
+and return you the contents without the headers. Also, it just assumes
+that the body contents of your request are json, so good luck with
+that.
 
 ## development
 
