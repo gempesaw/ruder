@@ -4,7 +4,7 @@ import parsePayload  from '../lib/parser';
 describe('Parsing', () => {
     let text, options;
 
-    describe('GET', () => {
+    describe('simplest request', () => {
         beforeEach(() => {
             text = 'GET https://www.google.com';
             options = parsePayload(text);
@@ -24,7 +24,7 @@ describe('Parsing', () => {
         });
     });
 
-    describe('POST', () => {
+    describe('with JSON payloads', () => {
         beforeEach( () => {
             text = `POST http://www.google.com
 Header1: Value1: Value3
@@ -65,5 +65,20 @@ Header2: Value2
         it('should set the appropriate json header', () => {
             expect(options.json).to.be.true;
         });
+    });
+
+    describe('plaintext payload', () => {
+        beforeEach(() => {
+            text = `POST http://www.google.com
+
+form=data`;
+            options = parsePayload(text);
+        });
+
+        it('should be able to send nonJSON bodies', () => {
+            expect(options.body).to.equal('form=data');
+            expect(options.json).to.be.undefined;
+        });
+
     });
 });
