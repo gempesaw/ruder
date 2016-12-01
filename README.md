@@ -13,22 +13,32 @@ and CORS stops you from accessing other domains.
 
 #### POST /
 
-Make a POST to `/` with a payload like:
+
+This is the only endpoint in the service. It requires the
+`Content-Type: application/json` header. For example, if our service
+is running on 4444, the following request would return the source of
+`google.com`.
 
 ```
-{ "data": "POST https://www.example.com
-Arbitrary: Header
+POST http://localhost:4444
+Content-Type: application/json
 
-{ \"some\": \"json payload\" }}"
+{ "data": "GET https://www.google.com" }
 ```
+
+As a curl, that's
+
+```
+$ curl -X POST http://localhost:4444 -H"Content-Type: application/json"  -d'{"data":"GET https://www.google.com"}'
+```
+
 
 The header and body are optional; for example, a simple DELETE payload
 could look like `{"data": "DELETE https://www.google.com" }`.
 
-The ruder server will parse that strange payload into a viable request
-and return you the contents without the headers. Also, it just assumes
-that the body contents of your request are json, so good luck with
-that.
+The ruder server parses that payload into a viable request and return
+you the contents without the headers. Also, it just assumes that the
+body contents of your request are json, so good luck with that.
 
 ## development
 
