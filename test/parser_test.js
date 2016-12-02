@@ -81,4 +81,24 @@ form=data`;
         });
 
     });
+
+    describe('weird spacing', () => {
+        it('should parse with extra spaces before/after method & url', () => {
+            const text = '   method    url   ';
+            const options = parsePayload(text);
+            expect(options.method).to.equal('method');
+            expect(options.url).to.equal('url');
+        });
+
+        it('should parse with extra spaces in headers', () => {
+            const text = `method url
+no:space
+    many:    spaces     `;
+            const options = parsePayload(text);
+            expect(options.headers).to.eql({
+                no: "space",
+                many: "spaces"
+            });
+        });
+    });
 });
