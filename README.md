@@ -37,8 +37,10 @@ The header and body are optional; for example, a simple DELETE payload
 could look like `{"data": "DELETE https://www.google.com" }`.
 
 The ruder server parses that payload into a viable request and return
-you the contents without the headers. Also, it just assumes that the
-body contents of your request are json, so good luck with that.
+you the contents without the headers. If your payload is JSON, ruder
+will also set the `Content-Type` headers automatically on its own
+request. If it's not JSON, no `Content-Type` will be set, but in both
+cases you're free to set your own.
 
 ## development
 
